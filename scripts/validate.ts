@@ -2,7 +2,7 @@ import { spawnSync } from 'node:child_process'
 import { readdirSync, rmSync } from 'node:fs'
 import { join } from 'node:path'
 
-const FIXTURES_DIR = 'fixtures'
+const FIXTURES_DIR = join(import.meta.dir, '..', 'fixtures')
 
 function listFixtures(): string[] {
   return readdirSync(FIXTURES_DIR, { withFileTypes: true })
@@ -23,6 +23,10 @@ function run(fixture: string): boolean {
   const isLibrary = fixture.endsWith('-library')
   const args = isLibrary ? ['x', 'tsc', '--build', project] : ['x', 'tsc', '--noEmit', '--project', project]
   const result = spawnSync('bun', args, { stdio: 'inherit' })
+  if (result.error) {
+    console.error(`  spawn error for ${fixture}:`, result.error.message)
+    return false
+  }
   return result.status === 0
 }
 
