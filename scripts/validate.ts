@@ -21,7 +21,9 @@ function run(fixture: string): boolean {
   cleanArtifacts(fixture)
   const project = join(FIXTURES_DIR, fixture)
   const isLibrary = fixture.endsWith('-library')
-  const args = isLibrary ? ['x', 'tsc', '--build', project] : ['x', 'tsc', '--noEmit', '--project', project]
+  const args = isLibrary
+    ? ['x', 'tsc', '--build', project]
+    : ['x', 'tsc', '--noEmit', '--project', project]
   const result = spawnSync('bun', args, { stdio: 'inherit' })
   if (result.error) {
     console.error(`  spawn error for ${fixture}:`, result.error.message)
