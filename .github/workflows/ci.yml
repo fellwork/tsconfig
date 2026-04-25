@@ -9,7 +9,12 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+
+      - name: Setup Node (for npm pack)
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
 
       - name: Setup bun
         uses: oven-sh/setup-bun@v2
@@ -24,3 +29,6 @@ jobs:
 
       - name: Validate fixtures
         run: bun run validate
+
+      - name: Verify published file list
+        run: npm pack --dry-run
