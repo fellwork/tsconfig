@@ -5,22 +5,59 @@
   "license": "MIT",
   "type": "module",
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fellwork/tsconfig.git"
+  },
+  "homepage": "https://github.com/fellwork/tsconfig#readme",
+  "bugs": {
+    "url": "https://github.com/fellwork/tsconfig/issues"
+  },
+  "keywords": [
+    "tsconfig",
+    "typescript",
+    "shared-config",
+    "fellwork"
+  ],
+  "files": [
+    "base.json",
+    "node.json",
+    "browser.json",
+    "library.json",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "exports": {
+    ".": "./base.json",
+    "./base": "./base.json",
+    "./node": "./node.json",
+    "./browser": "./browser.json",
+    "./library": "./library.json",
+    "./package.json": "./package.json"
+  },
   "engines": {
     "bun": ">=1.3.0",
     "node": ">=20.18.0"
   },
-  "scripts": {
-    "lint": "biome lint .",
-    "format": "biome format --write .",
-    "check": "biome check .",
-    "validate": "bun run scripts/validate.ts"
+  "peerDependencies": {
+    "typescript": ">=5.5.0"
+  },
+  "peerDependenciesMeta": {
+    "typescript": { "optional": false }
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.13",
     "@types/node": "^25.6.0",
     "typescript": "^5.6.2"
   },
-  "peerDependencies": {
-    "typescript": ">=5.5.0"
+  "scripts": {
+    "lint": "biome lint .",
+    "format": "biome format --write .",
+    "check": "biome check .",
+    "validate": "bun run scripts/validate.ts"
   }
 }
