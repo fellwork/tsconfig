@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://moonrepo.dev/schemas/tasks.json
+# Shared task definitions for the @fellwork/tsconfig project.
+
+tasks:
+  lint:
+    command: "biome lint ."
+
+  format:
+    command: "biome format --write ."
+
+  check:
+    command: "biome check ."
+
+  validate:
+    command: "bun run scripts/validate.ts"
+    deps:
+      - "check"

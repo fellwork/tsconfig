@@ -1,0 +1,7 @@
+# Single-project workspace — this repo is the project.
+projects:
+  - "."
+
+vcs:
+  defaultBranch: "main"
+  provider: "github"
