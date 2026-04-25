@@ -1,0 +1,4 @@
+{
+  "extends": ["../../node.json", "../../library.json"],
+  "include": ["src/**/*"]
+}
